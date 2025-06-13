@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="kris.png" width="258" height="45">
+	<SubTexture name="down0" x="122" y="1" width="37" height="41" frameX="-3" frameY="-4" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="down1" x="44" y="1" width="38" height="40" frameX="-2" frameY="-4" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="idle" x="1" y="1" width="39" height="39" frameX="-0" frameY="-3" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="left0" x="86" y="1" width="32" height="40" frameX="-4" frameY="-3" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="left1" x="163" y="1" width="33" height="41" frameX="-3" frameY="-2" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="right0" x="86" y="1" width="32" height="40" frameX="-4" frameY="-3" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="right1" x="163" y="1" width="33" height="41" frameX="-3" frameY="-2" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="up0" x="231" y="1" width="26" height="43" frameX="-4" frameY="-0" frameWidth="40" frameHeight="45"/>
+	<SubTexture name="up1" x="200" y="1" width="27" height="42" frameX="-3" frameY="-1" frameWidth="40" frameHeight="45"/>
+</TextureAtlas>

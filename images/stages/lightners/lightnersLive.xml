@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="lightnersLive.png" width="1286" height="966">
+	<SubTexture name="lightsOff" x="1" y="1" width="640" height="480" frameX="-0" frameY="-0" frameWidth="640" frameHeight="480"/>
+	<SubTexture name="lightsOn" x="645" y="1" width="640" height="480" frameX="-0" frameY="-0" frameWidth="640" frameHeight="480"/>
+	<SubTexture name="spotlight-lightsOff" x="1" y="485" width="640" height="480" frameX="-0" frameY="-0" frameWidth="640" frameHeight="480"/>
+	<SubTexture name="spotlight-lightsOn" x="645" y="485" width="640" height="480" frameX="-0" frameY="-0" frameWidth="640" frameHeight="480"/>
+</TextureAtlas>

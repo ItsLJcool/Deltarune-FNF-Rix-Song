@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-character>
+<character y="-35" sprite="tenna" scale="1.5" antialiasing="false" flipX="true" icon="bf" color="#30B0D1" camy="100" camx="50">
+	<anim name="idle" anim="idle" x="0" y="0" fps="60" loop="true"/>
+	<anim name="singUP" anim="up" x="26" y="-30" fps="30" loop="false"/>
+	<anim name="singLEFT" anim="right" x="-11" y="-27" fps="30" loop="false"/>
+	<anim name="singRIGHT" anim="left" x="-11" y="-45" fps="30" loop="false"/>
+	<anim name="singDOWN" anim="down" x="15" y="-28" fps="15" loop="false"/>
+	<anim name="hmm" anim="hmm" x="5" y="-7" fps="30" loop="false"/>
+	<anim name="sad" anim="sadboi" x="-13" y="-28" fps="30" loop="false"/>
+	<anim name="pointUp0" anim="pointUp0" x="-12" y="-16" fps="30" loop="false"/>
+</character>

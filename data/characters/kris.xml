@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character y="0" sprite="kris" scale="2" antialiasing="false" isPlayer="true" icon="bf" color="#30B0D1" camx="-65" camy="60">
+	<anim name="idle" anim="idle" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singUP" anim="up" x="1" y="0" fps="12" loop="false"/>
+	<anim name="singLEFT" anim="left" x="1" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHT" anim="right" x="1" y="0" fps="12" loop="false"/>
+	<anim name="singDOWN" anim="down" x="0" y="0" fps="12" loop="false"/>
+</character>

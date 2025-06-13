@@ -1,0 +1,17 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 141,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": false,
+	"parsedColor": -1,
+	"displayName": "Rix Again Deltarune",
+	"icon": "Icon",
+	"name": "test-song",
+	"color": "#FFFFFF",
+	"customValues": {}
+}

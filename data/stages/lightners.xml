@@ -1,0 +1,10 @@
+<stage zoom="3" name="lightners" folder="stages/lightners/" startCamPosY="50" startCamPosX="200">
+    <sprite name="stageBg" x="-28" y="-112" sprite="lightnersLive" scroll="1">
+        <anim name="spotlight-lightsOff" anim="spotlight-lightsOff" loop="false"/>
+        <anim name="lightsOn" anim="lightsOn" loop="false"/>
+        <anim name="spotlight-lightsOn" anim="spotlight-lightsOn" loop="false"/>
+        <anim name="lightsOff" anim="lightsOff" loop="false"/>
+    </sprite>
+    <dad x="150"/>
+    <boyfriend x="335" y="25"/>
+</stage>
