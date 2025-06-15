@@ -34,18 +34,18 @@ var zoomTween:FlxTween;
 function onEvent(e) {
     var event = e.event;
     if (event.name != _eventName) return;
-    var params = event.params;
+    var params = event.params.copy();
 
-    var isInstant = params[0];
-    var additive = params[1];
-    var amount = params[2];
-    var fastNegative = params[3];
-    var takeSnapshot = params[4];
-    var resetToSnapshot = params[5];
+    var isInstant = params.shift();
+    var additive = params.shift();
+    var amount = params.shift();
+    var fastNegative = params.shift();
+    var takeSnapshot = params.shift();
+    var resetToSnapshot = params.shift();
 
-    var timeBeats = params[6];
-    var easeMode = params[7];
-    var easeType = params[8];
+    var timeBeats = params.shift();
+    var easeMode = params.shift();
+    var easeType = params.shift();
 
     var _ease = CoolUtil.flxeaseFromString(easeMode, easeType);
 

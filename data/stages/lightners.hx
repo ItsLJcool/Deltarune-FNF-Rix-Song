@@ -2,6 +2,10 @@
 import SpriteOutline;
 import funkin.editors.charter.Charter;
 
+import openfl.filters.BitmapFilter;
+import openfl.filters.GlowFilter;
+import flixel.graphics.frames.FlxFilterFrames;
+
 var croudGuys:FunkinSprite;
 var krisHeart:FlxSprite;
 
@@ -70,7 +74,12 @@ function postCreate() {
 		for (strum in player) strum.y = -200;
 	}
 
+}
 
+function createFilterFrames(sprite:FlxSprite, filter:BitmapFilter) {
+	var filterFrames = FlxFilterFrames.fromFrames(sprite.frames, SIZE_INCREASE, SIZE_INCREASE, [filter]);
+	updateFilter(sprite, filterFrames);
+	return filterFrames;
 }
 
 var coolTween:FlxTween;
@@ -101,20 +110,45 @@ function beatHit(curBeat) {
 }
 
 function krisSolo() {
-	var val = 0.35;
 	var time = (Conductor.crochet * 0.001) * 14;
 
 	FlxTween.tween(krisHeart, {alpha: 1}, time*0.8);
 	FlxTween.tween(bfOutline, {alpha: 1}, time);
 
+	theDarkening([krisHeart], (obj) -> {(return (obj == boyfriend) ? 0.5 : 0.2);}, time);
+}
+
+function weirdSfx() {
 	var _members = members.copy();
 	_members.remove(krisHeart);
+	_members.remove(boyfriend);
+	for (obj in _members) {
+		if (obj == null || obj.camera != camGame) continue;
+		if (obj.colorTransform == null) continue;
+	
+		obj.colorTransform.redMultiplier += 0.6;
+		obj.colorTransform.greenMultiplier += 0.6;
+		obj.colorTransform.blueMultiplier += 0.6;
+	}
+	
+	var time = (Conductor.crochet * 0.001) * 3;
+	theDarkening([krisHeart, boyfriend], null, time, true);
+}
+
+function theDarkening(remove:Array<Dynamic>, valueFunc:Void->Float, time:Float, ?forceCancelTweens:Bool = false) {
+	valueFunc ??= (obj) -> return 0.2;
+	forceCancelTweens ??= false;
+
+	var _members = members.copy();
+	for (item in remove) _members.remove(item);
+
 	for (obj in _members) {
 		if (obj == null || obj.camera != camGame) continue;
 		if (obj.colorTransform == null) continue;
 		
-		var coolerValue = (obj == boyfriend) ? 0.5 : 0.2;
-		
+		var coolerValue = valueFunc(obj);
+
+		if (forceCancelTweens) FlxTween.cancelTweensOf(obj);
 		FlxTween.tween(obj.colorTransform, {redMultiplier: coolerValue, greenMultiplier: coolerValue, blueMultiplier: coolerValue}, time*0.9);
 	}
 }
