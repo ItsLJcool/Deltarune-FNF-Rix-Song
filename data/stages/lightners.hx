@@ -1,8 +1,14 @@
 // a
 import SpriteOutline;
+import funkin.editors.charter.Charter;
 
 var croudGuys:FunkinSprite;
 var krisHeart:FlxSprite;
+
+var clickSfx = FlxG.sound.load(Paths.sound('clickSfx'));
+clickSfx.volume = 0;
+clickSfx.play();
+clickSfx.onComplete = () -> { clickSfx.volume = 0.7; clickSfx.onComplete = null; };
 
 introLength = 0;
 function create() {
@@ -11,6 +17,7 @@ function create() {
 
 var bfOutline:SpriteOutline;
 function postCreate() {
+	 
 	insert(members.indexOf(boyfriend), bfOutline = new SpriteOutline(boyfriend));
 	bfOutline.alpha = 0;
 
@@ -48,17 +55,36 @@ function postCreate() {
 	}
 	croudGuys.y += 250;
 	add(croudGuys);
+
+	
+	if (!Charter.startHere) {
+		var _members = members.copy();
+		var tweenTime = (Conductor.crochet * 0.001)*16;
+		for (obj in _members) {
+			if (obj == null || obj.camera != camGame) continue;
+			if (obj.colorTransform == null) continue;
+			obj.colorTransform.redMultiplier = obj.colorTransform.greenMultiplier = obj.colorTransform.blueMultiplier = 0.001;
+			FlxTween.tween(obj.colorTransform, {redMultiplier: 1, greenMultiplier: 1, blueMultiplier: 1}, tweenTime);
+		}
+		
+		for (strum in player) strum.y = -200;
+	}
+
+
 }
 
 var coolTween:FlxTween;
 function beatHit(curBeat) {
 	switch (curBeat) {
-		case 16: stageBg.animation.play('lightsOn');
-		case 20: stageBg.animation.play('spotlight-lightsOn');
+		case 16:
+			stageBg.animation.play('lightsOn');
+			clickSfx.play(true);
+			
+			if (!Charter.startHere) for (strum in player) FlxTween.tween(strum, {y: 50}, (Conductor.crochet * 0.001)*4, {ease: FlxEase.quadOut});
+		case 20:
+			stageBg.animation.play('spotlight-lightsOn');
+			clickSfx.play(true);
 		case 22: FlxTween.tween(croudGuys, {y: croudGuys.y - 250}, 2, {ease: FlxEase.quintOut});
-		case 32:
-			FlxTween.cancelTweensOf(croudGuys);
-			croudGuys.setPosition(stageBg.x + (stageBg.width - croudGuys.width) * 0.5, (stageBg.y + stageBg.height * 0.5) - 15);
 	}
 
 	if (curBeat >= 32) {
@@ -74,32 +100,27 @@ function beatHit(curBeat) {
 	krisHeart.scale.set(1.15, 1.15);
 }
 
-function stepHit(curStep) {
-	switch (curStep) {
-		case 67: stageBg.animation.play('lightsOff');
-		case 68: stageBg.animation.play('lightsOn');
-	}
-}
-
 function krisSolo() {
 	var val = 0.35;
 	var time = (Conductor.crochet * 0.001) * 14;
 
-	FlxTween.tween(krisHeart, {alpha: 1}, time*0.8, {ease: FlxEase.linear});
-	FlxTween.tween(bfOutline, {alpha: 1}, time, {ease: FlxEase.linear});
+	FlxTween.tween(krisHeart, {alpha: 1}, time*0.8);
+	FlxTween.tween(bfOutline, {alpha: 1}, time);
 
 	var _members = members.copy();
 	_members.remove(krisHeart);
 	for (obj in _members) {
 		if (obj == null || obj.camera != camGame) continue;
 		if (obj.colorTransform == null) continue;
-
-		FlxTween.tween(obj.colorTransform, {redMultiplier: 0.2, greenMultiplier: 0.2, blueMultiplier: 0.2}, time*0.9, {ease: FlxEase.linear});
+		
+		var coolerValue = (obj == boyfriend) ? 0.5 : 0.2;
+		
+		FlxTween.tween(obj.colorTransform, {redMultiplier: coolerValue, greenMultiplier: coolerValue, blueMultiplier: coolerValue}, time*0.9);
 	}
 }
 
 function onPlayerHit(e) {
-	var _amt = 2;
+	var _amt = 2.5;
 	switch(e.direction) {
 		case 0: krisHeart.x -= _amt;
 		case 1: krisHeart.y += _amt;
