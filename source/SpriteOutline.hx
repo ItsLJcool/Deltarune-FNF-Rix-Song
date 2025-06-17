@@ -1,5 +1,3 @@
-// Original Code written by Ne_Eo (Only crediting him for the help on the original script, most of the code is written directly by me)
-
 // Class Structure written by ItsLJcool
 
 import funkin.game.Character;
