@@ -22,7 +22,7 @@ function create() {
 var bfOutline:SpriteOutline;
 function postCreate() {
 	 
-	insert(members.indexOf(boyfriend), bfOutline = new SpriteOutline(boyfriend));
+	add(bfOutline = new SpriteOutline(boyfriend));
 	bfOutline.alpha = 0;
 
 	krisHeart = new FlxSprite().loadGraphic(Paths.image('stages/lightners/heart'));
