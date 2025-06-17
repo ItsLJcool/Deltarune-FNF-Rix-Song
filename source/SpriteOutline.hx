@@ -20,7 +20,7 @@ class SpriteOutline extends FlxBasic {
     public var poses:Array<FlxPoint> = [];
 
     // The character we are generating the outline for
-    public var char:Character;
+    public var char:FlxSprite;
 
     // The offset / size of the outline
     public var offset:Float = 2;
@@ -37,7 +37,7 @@ class SpriteOutline extends FlxBasic {
 
     public var indexCharLayer:Int = 0;
 
-    public function new(char:Character, ?color:FlxColor, ?offset:Float = 2, ?total:Int = 4, ?aboveChar:Bool = false) {
+    public function new(char:FlxSprite, ?color:FlxColor, ?offset:Float = 2, ?total:Int = 4, ?aboveChar:Bool = false) {
         this.char = char;
 
         if (color != null) this.color = color;
